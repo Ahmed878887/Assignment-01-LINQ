@@ -263,6 +263,19 @@
                 Console.WriteLine($"- {letter}");
             }
             #endregion
+            #region Q04
+            //4. Create one sequence that contains the first letters of product names that are not also first letters of customer names.
+            var productOnlyFirstLetters = productFirstLetters
+            .Except(customerFirstLetters)
+            .OrderBy(c => c)
+            .ToList();
+
+            Console.WriteLine("First letters of product names not in customer names:");
+            foreach (var letter in productOnlyFirstLetters)
+            {
+                Console.WriteLine($"- {letter}");
+            }
+            #endregion
         }
     }
 }
