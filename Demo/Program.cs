@@ -61,6 +61,22 @@
                 Console.WriteLine($"{customer.CustomerName}: {customer.OrderCount} orders");
             }
             #endregion
+            #region Q03
+            //3. Return a list of categories and how many products each has
+
+            var categoryProductCounts = ProductList
+            .GroupBy(p => p.Category)
+            .Select(g => new {
+                Category = g.Key,
+                ProductCount = g.Count()
+            })
+            .ToList();
+
+                    foreach (var category in categoryProductCounts)
+            {
+                Console.WriteLine($"{category.Category}: {category.ProductCount} products");
+            }
+            #endregion
         }
     }
 }
