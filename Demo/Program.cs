@@ -77,6 +77,13 @@
                 Console.WriteLine($"{category.Category}: {category.ProductCount} products");
             }
             #endregion
+            #region Q04
+            //4. Get the total of the numbers in an array.
+            //Int [] Arr = {5, 4, 1, 3, 9, 8, 6, 7, 2, 0}; 
+            int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+            int total = Arr.Sum();
+            Console.WriteLine($"Total sum: {total}");
+            #endregion
         }
     }
 }
