@@ -175,6 +175,30 @@
                 Console.WriteLine($"{category.Category}: ${category.MaxPrice:F2}");
             }
             #endregion
+            #region Q13
+            //13. Get the products with the most expensive price in each category.
+            var expensiveProducts = ProductList
+            .GroupBy(p => p.Category)
+            .Select(g => {
+                var maxPrice = g.Max(p => p.UnitPrice);
+                return new
+                {
+                    Category = g.Key,
+                    ExpensiveProducts = g.Where(p => p.UnitPrice == maxPrice).ToList(),
+                    Price = maxPrice
+                };
+            })
+            .ToList();
+
+            foreach (var category in expensiveProducts)
+            {
+                Console.WriteLine($"{category.Category} (${category.Price:F2}):");
+                foreach (var product in category.ExpensiveProducts)
+                {
+                    Console.WriteLine($"  - {product.ProductName}");
+                }
+            }
+            #endregion
         }
     }
 }
