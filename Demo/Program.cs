@@ -46,6 +46,21 @@
             int oddCount = Arr.Count(n => n % 2 != 0);
             Console.WriteLine($"Number of odd numbers: {oddCount}");
             #endregion
+            #region Q02
+            //2. Return a list of customers and how many orders each has.
+
+                    var customerOrderCounts = CustomerList
+            .Select(c => new {
+                CustomerName = c.CompanyName,
+                OrderCount = c.Orders.Count()
+            })
+            .ToList();
+
+            foreach (var customer in customerOrderCounts)
+            {
+                Console.WriteLine($"{customer.CustomerName}: {customer.OrderCount} orders");
+            }
+            #endregion
         }
     }
 }
