@@ -120,6 +120,22 @@
                 Console.WriteLine($"{category.Category}: {category.TotalUnits} units in stock");
             }
             #endregion
+            #region Q10
+            //10. Get the cheapest price among each category's products
+
+            var minPricePerCategory = ProductList
+            .GroupBy(p => p.Category)
+            .Select(g => new {
+                Category = g.Key,
+                MinPrice = g.Min(p => p.UnitPrice)
+            })
+            .ToList();
+
+            foreach (var category in minPricePerCategory)
+            {
+                Console.WriteLine($"{category.Category}: ${category.MinPrice:F2}");
+            }
+            #endregion
         }
     }
 }
