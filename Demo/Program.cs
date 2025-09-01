@@ -136,6 +136,30 @@
                 Console.WriteLine($"{category.Category}: ${category.MinPrice:F2}");
             }
             #endregion
+            #region Q11
+            //11. Get the products with the cheapest price in each category (Use Let)
+            var cheapestProducts = ProductList
+            .GroupBy(p => p.Category)
+            .Select(g => {
+                var minPrice = g.Min(p => p.UnitPrice);
+                return new
+                {
+                    Category = g.Key,
+                    CheapestProducts = g.Where(p => p.UnitPrice == minPrice).ToList(),
+                    Price = minPrice
+                };
+            })
+            .ToList();
+
+            foreach (var category in cheapestProducts)
+            {
+                Console.WriteLine($"{category.Category} (${category.Price:F2}):");
+                foreach (var product in category.CheapestProducts)
+                {
+                    Console.WriteLine($"  - {product.ProductName}");
+                }
+            }
+            #endregion
         }
     }
 }
