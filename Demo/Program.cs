@@ -104,6 +104,22 @@
             double averageLength = words.Average(word => word.Length);
             Console.WriteLine($"Average word length: {averageLength:F2}");
             #endregion
+            #region Q09
+            //9. Get the total units in stock for each product category.
+
+            var categoryStock = ProductList
+            .GroupBy(p => p.Category)
+            .Select(g => new {
+                Category = g.Key,
+                TotalUnits = g.Sum(p => p.UnitsInStock)
+            })
+            .ToList();
+
+            foreach (var category in categoryStock)
+            {
+                Console.WriteLine($"{category.Category}: {category.TotalUnits} units in stock");
+            }
+            #endregion
         }
     }
 }
