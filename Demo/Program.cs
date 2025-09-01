@@ -99,6 +99,11 @@
             int longestLength = words.Max(word => word.Length);
             Console.WriteLine($"Longest word length: {longestLength}");
             #endregion
+            #region Q08
+            //8. Get the average length of the words in dictionary_english.txt (Read dictionary_english.txt into Array of String First).
+            double averageLength = words.Average(word => word.Length);
+            Console.WriteLine($"Average word length: {averageLength:F2}");
+            #endregion
         }
     }
 }
