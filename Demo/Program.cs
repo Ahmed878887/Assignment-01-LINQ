@@ -199,6 +199,21 @@
                 }
             }
             #endregion
+            #region Q14
+            //14. Get the average price of each category's products.
+            var avgPricePerCategory = ProductList
+            .GroupBy(p => p.Category)
+            .Select(g => new {
+                Category = g.Key,
+                AveragePrice = g.Average(p => p.UnitPrice)
+            })
+            .ToList();
+
+            foreach (var category in avgPricePerCategory)
+            {
+                Console.WriteLine($"{category.Category}: ${category.AveragePrice:F2} average");
+            }
+            #endregion
         }
     }
 }
