@@ -94,6 +94,11 @@
             int shortestLength = words.Min(word => word.Length);
             Console.WriteLine($"Shortest word length: {shortestLength}");
             #endregion
+            #region Q07
+            //7. Get the length of the longest word in dictionary_english.txt (Read dictionary_english.txt into Array of String First).
+            int longestLength = words.Max(word => word.Length);
+            Console.WriteLine($"Longest word length: {longestLength}");
+            #endregion
         }
     }
 }
