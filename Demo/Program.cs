@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.Intrinsics.X86;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Demo
 {
@@ -390,6 +392,37 @@ namespace Demo
                 {
                     Console.WriteLine($"  {number}");
                 }
+            }
+
+            #endregion
+            #region Q02
+            //02-Uses group by to partition a list of words by their first letter.
+            //Use dictionary_english.txt for Input
+           
+            string[] words = File.ReadAllLines("dictionary_english.txt");
+
+            var groupedByFirstLetter = words
+                .GroupBy(word => char.ToUpper(word[0])) 
+                .OrderBy(g => g.Key)
+                .ToList();
+
+            Console.WriteLine("Words grouped by first letter:");
+            foreach (var group in groupedByFirstLetter)
+            {
+                Console.WriteLine($"\nWords starting with '{group.Key}':");
+
+                
+                foreach (var word in group.Take(5))
+                {
+                    Console.WriteLine($"  {word}");
+                }
+
+                if (group.Count() > 5)
+                {
+                    Console.WriteLine($"  ... and {group.Count() - 5} more words");
+                }
+
+                Console.WriteLine($"  Total: {group.Count()} words");
             }
 
             #endregion
