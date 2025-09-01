@@ -214,6 +214,20 @@
                 Console.WriteLine($"{category.Category}: ${category.AveragePrice:F2} average");
             }
             #endregion
+            #region Part03 LINQ - Set Operators
+            //1. Find the unique Category names from Product List
+            var uniqueCategories = ProductList
+            .Select(p => p.Category)
+            .Distinct()
+            .OrderBy(c => c)
+            .ToList();
+
+            Console.WriteLine("Unique Categories:");
+            foreach (var category in uniqueCategories)
+            {
+                Console.WriteLine($"- {category}");
+            }
+            #endregion
         }
     }
 }
