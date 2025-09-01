@@ -89,6 +89,11 @@
             long totalChars = words.Sum(word => word.Length);
             Console.WriteLine($"Total characters: {totalChars}");
             #endregion
+            #region Q06
+            //6. Get the length of the shortest word in dictionary_english.txt (Read dictionary_english.txt into Array of String First).
+            int shortestLength = words.Min(word => word.Length);
+            Console.WriteLine($"Shortest word length: {shortestLength}");
+            #endregion
         }
     }
 }
