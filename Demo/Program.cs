@@ -276,6 +276,52 @@
                 Console.WriteLine($"- {letter}");
             }
             #endregion
+            #region Q05
+            //5. Create one sequence that contains the last Three Characters in each name of all customers and products, including any duplicates
+            var customerLastThreeChars = CustomerList
+            .Select(c =>
+            {
+                var name = c.CompanyName;
+                return name.Length >= 3 ? name.Substring(name.Length - 3) : name;
+            });
+
+            var productLastThreeChars = ProductList
+                .Select(p =>
+                {
+                    var name = p.ProductName;
+                    return name.Length >= 3 ? name.Substring(name.Length - 3) : name;
+                });
+
+            var allLastThreeChars = customerLastThreeChars
+                .Concat(productLastThreeChars)
+                .ToList();
+
+            Console.WriteLine("Last three characters from all names (including duplicates):");
+            foreach (var chars in allLastThreeChars)
+            {
+                Console.WriteLine($"- {chars}");
+            }
+            #endregion
+            #region Part 04 LINQ - Quantifiers
+            //1. Determine if any of the words in dictionary_english.txt (Read dictionary_english.txt into Array of String First) contain the substring 'ei'.
+
+            // First, read the dictionary file
+            string[] words = File.ReadAllLines("dictionary_english.txt");
+
+            // Check if any words contain 'ei'
+            bool hasEiWords = words.Any(word => word.Contains("ei", StringComparison.OrdinalIgnoreCase));
+
+            Console.WriteLine($"Any words contain 'ei': {hasEiWords}");
+
+            // Optional: Show some examples if they exist
+            if (hasEiWords)
+            {
+                var eiWords = words.Where(word => word.Contains("ei", StringComparison.OrdinalIgnoreCase))
+                                  .Take(10)
+                                  .ToList();
+                Console.WriteLine($"Examples: {string.Join(", ", eiWords)}");
+            }
+            #endregion
         }
     }
 }
