@@ -346,6 +346,29 @@
                 }
             }
             #endregion
+            #region Q03
+            //3. Return a grouped a list of products only for categories that have all of their products in stock.
+
+            var categoriesAllInStock = ProductList
+            .GroupBy(p => p.Category)
+            .Where(g => g.All(p => p.UnitsInStock > 0)) // Categories where ALL products are in stock
+            .Select(g => new {
+                Category = g.Key,
+                Products = g.ToList(),
+                TotalProducts = g.Count()
+            })
+            .ToList();
+
+            Console.WriteLine("Categories where all products are in stock:");
+            foreach (var category in categoriesAllInStock)
+            {
+                Console.WriteLine($"\n{category.Category} ({category.TotalProducts} products all in stock):");
+                foreach (var product in category.Products)
+                {
+                    Console.WriteLine($"  - {product.ProductName} (Stock: {product.UnitsInStock})");
+                }
+            }
+            #endregion
         }
     }
 }
