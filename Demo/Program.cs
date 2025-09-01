@@ -250,6 +250,19 @@
                 Console.WriteLine($"- {letter}");
             }
             #endregion
+            #region Q03
+            //3. Create one sequence that contains the common first letter from both product and customer names.
+            var commonFirstLetters = productFirstLetters
+            .Intersect(customerFirstLetters)
+            .OrderBy(c => c)
+            .ToList();
+
+            Console.WriteLine("Common first letters from both product and customer names:");
+            foreach (var letter in commonFirstLetters)
+            {
+                Console.WriteLine($"- {letter}");
+            }
+            #endregion
         }
     }
 }
