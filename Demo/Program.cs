@@ -228,6 +228,28 @@
                 Console.WriteLine($"- {category}");
             }
             #endregion
+            #region Q02 
+            //2. Produce a Sequence containing the unique first letter from both product and customer names.
+
+            var productFirstLetters = ProductList
+            .Select(p => p.ProductName[0])
+            .Distinct();
+
+            var customerFirstLetters = CustomerList
+                .Select(c => c.CompanyName[0])
+                .Distinct();
+
+            var uniqueFirstLetters = productFirstLetters
+                .Union(customerFirstLetters)
+                .OrderBy(c => c)
+                .ToList();
+
+            Console.WriteLine("Unique first letters from both product and customer names:");
+            foreach (var letter in uniqueFirstLetters)
+            {
+                Console.WriteLine($"- {letter}");
+            }
+            #endregion
         }
     }
 }
