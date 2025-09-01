@@ -84,6 +84,11 @@
             int total = Arr.Sum();
             Console.WriteLine($"Total sum: {total}");
             #endregion
+            #region Q05
+            //5. Get the total number of characters of all words in dictionary_english.txt (Read dictionary_english.txt into Array of String First).
+            long totalChars = words.Sum(word => word.Length);
+            Console.WriteLine($"Total characters: {totalChars}");
+            #endregion
         }
     }
 }
