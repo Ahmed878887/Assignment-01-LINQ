@@ -27,6 +27,17 @@
                 Console.WriteLine("No product found with price > 1000");
             }
             #endregion
+            #region Q03     
+            //3. Retrieve the second number greater than 5 
+            //Int [] Arr = {5, 4, 1, 3, 9, 8, 6, 7, 2, 0};
+            int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+
+            var secondNumberGreaterThan5 = Arr
+                .Where(n => n > 5)          // Filter numbers > 5
+                .Skip(1)                    // Skip the first one
+                .FirstOrDefault();          // Get the second one (or default if none exists)
+
+            Console.WriteLine($"Second number greater than 5: {secondNumberGreaterThan5}");
         }
     }
 }
