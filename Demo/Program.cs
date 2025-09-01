@@ -322,6 +322,30 @@
                 Console.WriteLine($"Examples: {string.Join(", ", eiWords)}");
             }
             #endregion
+            #region Q02
+            //2. Return a grouped a list of products only for categories that have at least one product that is out of stock.
+
+            var categoriesWithOutOfStock = ProductList
+            .GroupBy(p => p.Category)
+            .Where(g => g.Any(p => p.UnitsInStock == 0)) // Categories with at least one out-of-stock product
+            .Select(g => new {
+                Category = g.Key,
+                Products = g.ToList(),
+                OutOfStockCount = g.Count(p => p.UnitsInStock == 0)
+            })
+            .ToList();
+
+            Console.WriteLine("Categories with out-of-stock products:");
+            foreach (var category in categoriesWithOutOfStock)
+            {
+                Console.WriteLine($"\n{category.Category} ({category.OutOfStockCount} out of stock):");
+                foreach (var product in category.Products)
+                {
+                    string status = product.UnitsInStock == 0 ? "OUT OF STOCK" : $"In stock: {product.UnitsInStock}";
+                    Console.WriteLine($"  - {product.ProductName} ({status})");
+                }
+            }
+            #endregion
         }
     }
 }
