@@ -1,4 +1,6 @@
-﻿namespace Demo
+﻿using System.Collections.Generic;
+
+namespace Demo
 {
     internal class Program
     {
@@ -368,6 +370,28 @@
                     Console.WriteLine($"  - {product.ProductName} (Stock: {product.UnitsInStock})");
                 }
             }
+            #endregion
+            #region Part05 LINQ – Grouping Operators
+            //Use group by to partition a list of numbers by their remainder when divided by 5
+            // List<int> numbers = new list<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+
+            List<int> numbers = new List<int> { 0, 12, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+
+            var groupedByRemainder = numbers
+                .GroupBy(n => n % 5)
+                .OrderBy(g => g.Key)
+                .ToList();
+
+            Console.WriteLine("Numbers grouped by remainder when divided by 5:");
+            foreach (var group in groupedByRemainder)
+            {
+                Console.WriteLine($"\nNumbers with remainder {group.Key} when divided by 5:");
+                foreach (var number in group.OrderBy(n => n))
+                {
+                    Console.WriteLine($"  {number}");
+                }
+            }
+
             #endregion
         }
     }
