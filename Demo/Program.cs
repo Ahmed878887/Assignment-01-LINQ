@@ -38,6 +38,14 @@
                 .FirstOrDefault();          // Get the second one (or default if none exists)
 
             Console.WriteLine($"Second number greater than 5: {secondNumberGreaterThan5}");
+            #endregion
+            #region Part02 LINQ - Aggregate Operators
+            //1. Uses Count to get the number of odd numbers in the array
+            //Int [] Arr = {5, 4, 1, 3, 9, 8, 6, 7, 2, 0};
+            int[] Arr = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+            int oddCount = Arr.Count(n => n % 2 != 0);
+            Console.WriteLine($"Number of odd numbers: {oddCount}");
+            #endregion
         }
     }
 }
